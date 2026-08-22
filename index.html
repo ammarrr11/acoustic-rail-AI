@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semantic Organization</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">S</div><div><strong>Semantic</strong><span>Organization</span></div></div>
+      <nav>
+        <button class="nav-item active" data-view="workspace">⌘ <span>Workspace</span></button>
+        <button class="nav-item" data-view="concepts">◇ <span>Concept Map</span></button>
+        <button class="nav-item" data-view="settings">⚙ <span>Defaults</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span> Semantic engine active<br><small>Context-aware defaults enabled</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">SEMANTIC WORKSPACE</p><h1 id="pageTitle">Organize by meaning, not just folders.</h1></div><button class="primary" id="newNote">+ New note</button></header>
+
+      <section id="workspace" class="view active-view">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-copy"><span class="tag">AUTO-ORGANIZED</span><h2>Your notes already have a structure.</h2><p>The engine reads recorded context, detects terminology, and proposes editable concepts and relationships.</p></div>
+            <div class="mini-graph"><div class="node main-node">AI Project</div><div class="node n1">Research</div><div class="node n2">Frontend</div><div class="node n3">Hackathon</div><i class="line l1"></i><i class="line l2"></i><i class="line l3"></i></div>
+          </div>
+        </div>
+
+        <div class="section-head"><div><h3>Context-aware notes</h3><p>Defaults are suggestions — you can edit every field.</p></div><div class="filter">All notes ▾</div></div>
+        <div id="notes" class="notes-grid"></div>
+      </section>
+
+      <section id="concepts" class="view">
+        <div class="section-head"><div><h3>Concept Map</h3><p>Relationships inferred from your workspace context.</p></div></div>
+        <div class="concept-panel"><div class="concept-map"><div class="map-node center">AI Project</div><div class="map-node a">Semantic Search</div><div class="map-node b">Hackathon</div><div class="map-node c">React</div><div class="map-node d">Research</div><span class="edge e1"></span><span class="edge e2"></span><span class="edge e3"></span><span class="edge e4"></span></div><div class="relationship-list"><h4>Detected relationships</h4><div class="relationship"><b>AI Project</b><span>contains</span><b>Semantic Search</b></div><div class="relationship"><b>AI Project</b><span>context</span><b>Hackathon</b></div><div class="relationship"><b>Semantic Search</b><span>implemented with</span><b>React</b></div><div class="relationship"><b>Research</b><span>supports</span><b>AI Project</b></div></div></div>
+      </section>
+
+      <section id="settings" class="view">
+        <div class="section-head"><div><h3>Semantic Defaults</h3><p>Change the rules without losing the context that produced them.</p></div><button class="primary" id="saveDefaults">Save changes</button></div>
+        <div class="settings-card">
+          <label>Default category<select id="categoryDefault"><option>Project</option><option>Research</option><option>Idea</option><option>Meeting</option></select></label>
+          <label>Relationship sensitivity<select><option>Balanced</option><option>Conservative</option><option>Exploratory</option></select></label>
+          <label class="switch-row">Suggest terminology automatically <input id="termToggle" type="checkbox" checked /><span class="switch"></span></label>
+          <div class="logic"><span>Context signal</span><strong>Hackathon + AI + web app</strong><span>→</span><span>Suggested defaults</span><strong>Project · High priority · AI Project</strong></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="inspector">
+      <div class="inspector-head"><div><p class="eyebrow">INSPECTOR</p><h3>Semantic state</h3></div><span class="live">LIVE</span></div>
+      <div class="score"><div class="score-ring"><strong id="confidence">92%</strong><small>confidence</small></div><div><b>Context understood</b><p>Defaults generated from recorded context.</p></div></div>
+      <div class="inspector-block"><h4>Detected terminology</h4><div class="chips" id="chips"><button>AI</button><button>Semantic</button><button>React</button><button>Hackathon</button><button>Research</button></div></div>
+      <div class="inspector-block"><h4>Current defaults</h4><div class="state-row"><span>Category</span><b id="stateCategory">Project</b></div><div class="state-row"><span>Priority</span><b>High</b></div><div class="state-row"><span>Cluster</span><b>AI Project</b></div></div>
+      <div class="explain"><span>✦</span><div><b>Why this default?</b><p>Repeated AI, app, research and hackathon terms indicate an active project context.</p></div></div>
+    </aside>
+  </div>
+  <div id="modal" class="modal"><div class="modal-card"><button class="close" id="closeModal">×</button><p class="eyebrow">NEW NOTE</p><h2>Add contextual knowledge</h2><textarea id="noteText" placeholder="Example: Research semantic search approaches for our hackathon app..."></textarea><div class="suggestion"><b>Suggested by context</b><span>Project · AI Project · High priority</span></div><button class="primary full" id="addNote">Analyze & organize</button></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
